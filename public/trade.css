@@ -81,6 +81,7 @@
   flex-shrink: 0;
 }
 .vt-brand img {
+  height: auto;
   display: block;
   object-fit: contain;
 }
@@ -284,7 +285,7 @@
   padding-top: 24px;
 }
 .vt-sidebar-note img {
-  opacity: 0.35;
+  opacity: 0.55;
 }
 .vt-sidebar-note p {
   font-size: 12px;
@@ -987,6 +988,15 @@
   min-height: 56px;
   font-size: 9px;
   color: #4f5f79;
+}
+.vt-footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
+}
+.vt-footer-brand img {
+  opacity: 0.6;
 }
 .vt-footer a {
   color: #7986a0;
