@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>四种延展 · Vanod 动效探索</title>
+  <meta name="description" content="并排体验 Vanod 的四种品牌动效探索：延展双弧、双翼接力、分离聚合与呼吸 V。">
+  <meta name="theme-color" content="#0b0d12">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="motion.css?v=studies-1">
+  <script type="module" src="assets/motion.js?v=studies-1"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到动效对比</a>
+  <header class="motion-header container">
+    <a class="brand" href="./" aria-label="Vanod 首页"><img class="brand-wordmark" src="assets/wordmark.svg" width="112" height="29" alt="Vanod"></a>
+    <a class="back-link" href="index.html#experience">返回官网 <span aria-hidden="true">↗</span></a>
+  </header>
+  <main class="container" id="main">
+    <section class="motion-intro" aria-labelledby="page-title">
+      <div><p class="eyebrow">MOTION STUDIES / 01—04</p><h1 id="page-title">同一个 V，四种延展。</h1></div>
+      <p class="intro-note">并排感受拉伸、接力与聚合的节奏。<br>探索方案 · 正式交易动效保持不变。</p>
+    </section>
+    <section class="motion-controls" aria-label="同步预览控制">
+      <div class="playback-actions" role="group" aria-label="动画阶段">
+        <button id="load-motion" class="control-button active" type="button" aria-pressed="true">持续加载</button>
+        <button id="confirm-motion" class="control-button" type="button">完成确认 <span aria-hidden="true">↗</span></button>
+        <button id="replay-motion" class="control-button quiet" type="button">重新播放</button>
+      </div>
+      <div class="timing-actions" role="group" aria-label="播放设置">
+        <button id="pause-motion" class="control-button quiet" type="button" aria-pressed="false">暂停</button>
+        <button id="slow-motion" class="control-button quiet speed-button" type="button" aria-pressed="false">0.5× 慢放</button>
+      </div>
+    </section>
+    <div class="preview-status"><p id="motion-status" role="status">持续加载 · 正常速度</p><p id="reduced-note" hidden>已跟随系统减少动态效果，显示静态状态。</p><span class="preview-tag">四版同步预览</span></div>
+    <section class="motion-grid" id="motion-grid" aria-label="四种探索方案"></section>
+    <noscript><p class="motion-fallback">请启用 JavaScript 播放与比较四种动效。现有官网与交易介绍仍可正常阅读。</p></noscript>
+    <div class="motion-footnote"><p>大图看延展，小图看识别。每个方案都从 V 出发，在确认后回到 V。</p><p>这是品牌动效预览，不创建订单。</p></div>
+  </main>
+  <footer class="motion-footer container"><span>Vanod / Motion exploration</span><a href="index.html#experience">回到产品体验 <span aria-hidden="true">↗</span></a></footer>
+</body>
+</html>
