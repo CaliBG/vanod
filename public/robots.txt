@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://calibg.github.io/vanod/sitemap.xml

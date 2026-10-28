@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="description"
+      content="Vanod 模拟现货终端。查看公开行情、练习下单与管理本地模拟账户，不发送真实交易。"
+    />
+    <title>模拟现货交易 · Vanod</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="assets/base.css" />
+    <link rel="stylesheet" href="trade.css" />
+    <script type="module" src="assets/trade.js"></script>
+  </head>
+  <body class="vt-page">
+    <a class="vt-skip" href="#vt-order-form">跳到模拟订单</a>
+    <header class="vt-header">
+      <a class="vt-brand" href="index.html" aria-label="Vanod 官网"
+        ><img src="assets/wordmark.svg" alt="Vanod" width="106" height="28"
+      /></a>
+      <nav class="vt-nav" aria-label="主导航">
+        <a href="index.html">首页</a><a href="index.html#markets">行情</a
+        ><a class="vt-nav-active" href="trade.html" aria-current="page"
+          >模拟现货</a
+        ><a href="index.html#wallet">冷钱包</a>
+      </nav>
+      <span class="vt-env"><span></span>模拟交易</span>
+      <a class="vt-back" href="index.html#download"
+        >获取 App <span aria-hidden="true">↗</span></a
+      >
+    </header>
+
+    <main class="vt-terminal">
+      <div class="vt-topline">
+        <span
+          ><strong>现货终端</strong><span class="vt-separator">/</span>Paper
+          trading</span
+        ><span>本地模拟账户 · 无真实资金</span>
+      </div>
+      <section
+        class="vt-storage-alert"
+        id="vt-storage-alert"
+        aria-label="账户保存问题"
+        hidden
+      >
+        <div>
+          <strong id="vt-storage-title">账户暂不可用</strong>
+          <p id="vt-storage-message"></p>
+        </div>
+        <div class="vt-alert-actions">
+          <button type="button" id="vt-retry-save" hidden>
+            重试保存本次操作</button
+          ><button type="button" id="vt-reload-account">重新读取账户</button>
+        </div>
+      </section>
+
+      <div class="vt-grid">
+        <aside class="vt-panel vt-markets" aria-label="市场列表">
+          <div class="vt-panel-heading">
+            <h2>市场</h2>
+            <span>USD</span>
+          </div>
+          <label class="vt-search"
+            ><span aria-hidden="true">⌕</span
+            ><input
+              id="vt-search"
+              type="search"
+              placeholder="搜索交易对"
+              aria-label="搜索交易对"
+              autocomplete="off"
+          /></label>
+          <div class="vt-market-caption">
+            <span>交易对</span><span>价格 / 24h</span>
+          </div>
+          <div id="vt-market-list"></div>
+          <div class="vt-sidebar-note">
+            <img src="assets/logo.svg" alt="" width="22" height="22" />
+            <p>练习你的策略。<br />资产始终分清边界。</p>
+            <a href="index.html#wallet">了解 Vanod 冷钱包 ↗</a>
+          </div>
+        </aside>
+
+        <section class="vt-panel vt-ticker" aria-label="当前市场">
+          <div class="vt-ticker-main">
+            <div>
+              <h1 id="vt-pair">BTC <span>/ USD</span></h1>
+              <p id="vt-pair-name">Bitcoin</p>
+            </div>
+            <div>
+              <div class="vt-last" id="vt-last">—</div>
+              <div class="vt-change" id="vt-change">等待行情</div>
+            </div>
+          </div>
+          <dl class="vt-stats">
+            <div>
+              <dt>24h 最高</dt>
+              <dd id="vt-high">—</dd>
+            </div>
+            <div>
+              <dt>24h 最低</dt>
+              <dd id="vt-low">—</dd>
+            </div>
+            <div>
+              <dt id="vt-volume-label">24h 成交量 / BTC</dt>
+              <dd id="vt-volume">—</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="vt-panel vt-chart-panel" aria-label="价格图表">
+          <div class="vt-chart-toolbar">
+            <div class="vt-range" role="group" aria-label="图表时间范围">
+              <button type="button" data-hours="24" aria-pressed="true">
+                24H</button
+              ><button type="button" data-hours="48" aria-pressed="false">
+                48H
+              </button>
+            </div>
+            <span>每根 1 小时</span><span class="vt-chart-kind">K 线</span>
+          </div>
+          <div class="vt-chart-legend" id="vt-chart-legend">等待 OHLC 数据</div>
+          <div
+            class="vt-chart"
+            id="vt-chart"
+            tabindex="0"
+            role="img"
+            aria-label="等待市场 K 线，载入后可使用左右方向键查看蜡烛数据"
+          ></div>
+          <div class="vt-source-bar">
+            <span id="vt-source"><i></i>连接公开行情</span
+            ><span id="vt-updated">—</span
+            ><button
+              type="button"
+              id="vt-refresh"
+              aria-label="刷新 Coinbase 公开行情"
+            >
+              ↻ 刷新
+            </button>
+          </div>
+          <div class="vt-market-message" id="vt-market-message" hidden>
+            <p id="vt-market-error"></p>
+            <button type="button" id="vt-use-demo">体验示例行情</button>
+          </div>
+          <div class="vt-demo-note" id="vt-demo-note" hidden>
+            当前使用固定示例价格和盘口。<button
+              type="button"
+              id="vt-return-public"
+            >
+              切回公开行情
+            </button>
+          </div>
+        </section>
+
+        <aside class="vt-panel vt-book" aria-label="只读订单簿">
+          <div class="vt-panel-heading">
+            <h2>订单簿</h2>
+            <span id="vt-book-mode">只读快照</span>
+          </div>
+          <div class="vt-book-labels">
+            <span>价格 / USD</span><span id="vt-book-base">数量 / BTC</span>
+          </div>
+          <div id="vt-asks" aria-label="卖盘"></div>
+          <div class="vt-book-price">
+            <strong id="vt-book-last">—</strong><span>最新成交价</span>
+          </div>
+          <div id="vt-bids" aria-label="买盘"></div>
+          <div class="vt-book-footer">
+            盘口仅供查看，模拟单按最新成交价计算。
+          </div>
+        </aside>
+
+        <aside class="vt-panel vt-order" aria-label="模拟下单">
+          <div class="vt-panel-heading">
+            <h2>模拟现货</h2>
+            <span class="vt-small-badge">本机账户</span>
+          </div>
+          <form id="vt-order-form" novalidate>
+            <div class="vt-side" role="group" aria-label="订单方向">
+              <button type="button" data-side="buy" aria-pressed="true">
+                买入</button
+              ><button type="button" data-side="sell" aria-pressed="false">
+                卖出
+              </button>
+            </div>
+            <div class="vt-order-types" role="group" aria-label="订单类型">
+              <button
+                type="button"
+                data-order-type="market"
+                aria-pressed="true"
+              >
+                市价</button
+              ><button
+                type="button"
+                data-order-type="limit"
+                aria-pressed="false"
+              >
+                限价
+              </button>
+            </div>
+            <label class="vt-field"
+              ><span>价格 <small>USD</small></span
+              ><input
+                id="vt-price"
+                type="text"
+                inputmode="decimal"
+                autocomplete="off"
+                maxlength="32"
+                placeholder="按最新成交价模拟"
+                aria-label="限价，美元"
+                disabled
+            /></label>
+            <label class="vt-field"
+              ><span>数量 <small id="vt-size-unit">BTC</small></span
+              ><input
+                id="vt-size"
+                type="text"
+                inputmode="decimal"
+                autocomplete="off"
+                maxlength="32"
+                placeholder="0.00"
+                aria-label="模拟订单数量"
+            /></label>
+            <div
+              class="vt-percentages"
+              role="group"
+              aria-label="使用可用模拟余额比例"
+            >
+              <button type="button" data-percent="25">25%</button
+              ><button type="button" data-percent="50">50%</button
+              ><button type="button" data-percent="75">75%</button
+              ><button type="button" data-percent="100">100%</button>
+            </div>
+            <dl class="vt-order-summary">
+              <div>
+                <dt>可用余额</dt>
+                <dd id="vt-available">—</dd>
+              </div>
+              <div>
+                <dt>订单金额</dt>
+                <dd id="vt-notional">—</dd>
+              </div>
+              <div>
+                <dt>模拟费 · 0.10%</dt>
+                <dd id="vt-fee">—</dd>
+              </div>
+              <div class="vt-total">
+                <dt id="vt-total-label">预计支出</dt>
+                <dd id="vt-total">—</dd>
+              </div>
+            </dl>
+            <button class="vt-submit" id="vt-submit" type="submit" disabled>
+              模拟买入 BTC
+            </button>
+            <p class="vt-order-note" id="vt-order-note">
+              本地模拟成交，不发送真实交易订单。
+            </p>
+            <p
+              class="vt-form-message"
+              id="vt-form-message"
+              role="status"
+              aria-live="polite"
+            ></p>
+          </form>
+          <div class="vt-account">
+            <div class="vt-account-title">
+              <h3>模拟账户</h3>
+              <span>初始 10,000 USD</span>
+            </div>
+            <div class="vt-account-labels">
+              <span>资产</span><span>可用 / 冻结</span>
+            </div>
+            <div id="vt-balances"></div>
+            <p>与冷钱包独立，不支持真实充值或提现。</p>
+          </div>
+        </aside>
+
+        <section class="vt-panel vt-orders" aria-label="模拟订单记录">
+          <div class="vt-orders-heading">
+            <div role="group" aria-label="订单列表">
+              <button type="button" data-orders-tab="open" aria-pressed="true">
+                当前委托 <span id="vt-open-count">0</span></button
+              ><button
+                type="button"
+                data-orders-tab="history"
+                aria-pressed="false"
+              >
+                历史记录
+              </button>
+            </div>
+            <label
+              ><input id="vt-only-pair" type="checkbox" />仅当前交易对</label
+            >
+          </div>
+          <div class="vt-table-scroll">
+            <table class="vt-orders-table">
+              <thead>
+                <tr>
+                  <th>交易对 / 方向</th>
+                  <th>类型</th>
+                  <th>价格 / USD</th>
+                  <th>数量</th>
+                  <th>费用 / USD</th>
+                  <th>时间</th>
+                  <th>状态</th>
+                </tr>
+              </thead>
+              <tbody id="vt-orders-body"></tbody>
+            </table>
+          </div>
+          <div class="vt-empty-orders" id="vt-empty-orders">
+            <img src="assets/logo.svg" alt="" width="30" height="30" /><strong
+              >暂无当前委托</strong
+            >
+            <p>模拟限价订单会显示在这里。</p>
+          </div>
+          <p class="vt-orders-note">
+            限价单仅挂单并冻结模拟余额，不自动撮合；取消后释放。市价单按当前快照模拟成交。
+          </p>
+        </section>
+      </div>
+      <footer class="vt-footer">
+        <span>Vanod · Paper trading</span
+        ><span>数据：Coinbase 公开接口 / 主动选择的本地示例 · USD 报价</span
+        ><a href="index.html">回到官网 ↗</a>
+      </footer>
+    </main>
+    <div class="vt-motion-toast" id="vt-motion-toast" aria-hidden="true">
+      <svg width="44" height="44" viewBox="80 80 864 864" aria-hidden="true">
+        <g id="vt-motion-rotator">
+          <path id="vt-motion-path" fill="currentColor" />
+        </g>
+      </svg>
+      <div>
+        <strong id="vt-motion-title"></strong>
+        <p id="vt-motion-message"></p>
+      </div>
+    </div>
+    <noscript
+      ><p class="vt-noscript">
+        请启用 JavaScript 以查看行情和使用本地模拟交易。
+      </p></noscript
+    >
+  </body>
+</html>
