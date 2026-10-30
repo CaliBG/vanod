@@ -52,16 +52,22 @@
 @media(max-width:420px){.hero h1{font-size:34px}.product-summary article{grid-template-columns:28px 1fr auto;column-gap:10px}.product-summary h2{font-size:15px}.availability{font-size:9px}.section-top{gap:10px}.section-top h2{font-size:25px}}
 @media(prefers-reduced-motion:reduce){.frame-stage{cursor:default}.frame-stage video{display:none}.motion-ready .frame-stage img{opacity:1}.motion-replay{display:none}}
 
-/* A restrained lilac V window alongside the product introduction. */
-.hero-market-art{position:relative;min-width:0}.market-aperture{position:relative;isolation:isolate;overflow:hidden;border-radius:20px}
-.market-aperture .market-preview{margin:0;border-radius:20px;box-shadow:none;transition:opacity .25s ease}
-.market-mask-surface{display:none}.has-market-mask .market-preview{opacity:var(--market-content,.12)}
-.has-market-mask .market-mask-surface{display:block;position:absolute;inset:0;z-index:1;touch-action:pan-y pinch-zoom;cursor:grab;user-select:none;-webkit-user-select:none;outline-offset:-5px}
-.market-mask-surface:focus-visible{outline:2px solid #4d4577}.market-mask-veil{position:absolute;inset:0;width:100%;height:100%;max-width:none;pointer-events:none}
-.market-mask-label,.market-mask-bottom{position:absolute;left:26px;right:26px;color:#302a43;opacity:var(--mask-copy,1)}
-.market-mask-label{top:25px;font-size:9px;letter-spacing:.16em}.market-mask-bottom{bottom:20px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:11px}
-.market-mask-bottom>span>span{margin-left:8px}.market-mask-bottom button{border:0;background:none;color:inherit;font-size:11px;min-height:36px;padding:4px 0 4px 12px}.market-mask-bottom button span{margin-left:10px}
-.market-open .market-mask-surface{visibility:hidden;pointer-events:none}.market-dragging .market-mask-surface{cursor:grabbing}
-.market-mask-replay{position:absolute;right:2px;top:calc(100% + 10px);color:var(--dim);background:none;border:0;font-size:10px;padding:4px 0;min-height:28px}.market-mask-replay:hover{color:var(--text)}.market-mask-replay span{margin-left:8px}
-@media(max-width:800px){.hero-market-art{margin-bottom:18px}.market-mask-label,.market-mask-bottom{left:22px;right:22px}.market-mask-label{top:22px}}
-@media(prefers-reduced-motion:reduce){.market-mask-surface,.market-mask-replay{display:none!important}.market-aperture .market-preview{opacity:1}}
+/* Full-viewport, scroll-driven brand aperture. */
+.hero-market-art{position:relative;min-width:0}
+.intro-runway,.intro-overlay{display:none}
+.has-intro{--intro-travel:260svh;scroll-behavior:auto}
+.has-intro .intro-runway{display:block;height:var(--intro-travel);pointer-events:none}
+.has-intro .site-page{transform:translate3d(0,calc(-1 * var(--intro-travel)),0)}
+.has-intro .intro-overlay{display:block;position:fixed;inset:0;z-index:40;overflow:hidden;background:#c5bff4;color:#11121a;touch-action:pan-y pinch-zoom;isolation:isolate}
+.has-intro .intro-overlay.intro-ready{background:transparent}
+.intro-veil{display:none;position:absolute;inset:0;width:100%;height:100%;max-width:none;pointer-events:none}
+.intro-ready .intro-veil{display:block}
+.intro-fallback{position:absolute;left:50%;top:50%;width:min(70vw,530px);height:auto;transform:translate(-50%,-50%);filter:brightness(0)}
+.intro-ready .intro-fallback{display:none}
+.intro-skip{position:absolute;right:max(28px,env(safe-area-inset-right));top:max(24px,env(safe-area-inset-top));padding:12px 4px;font-size:12px;color:#403951;transition:color .2s}
+.intro-skip:hover{color:#11121a}.intro-skip span{margin-left:14px}.intro-skip:focus-visible{outline-color:#403951}
+.intro-hint{position:absolute;bottom:max(32px,env(safe-area-inset-bottom));left:0;right:0;text-align:center;margin:0;font-size:12px;letter-spacing:.04em;color:#4f4766;opacity:var(--intro-hint-opacity,1);pointer-events:none}
+.intro-hint span{display:block;margin-top:12px;font-size:20px;line-height:1}
+.has-intro .intro-complete{visibility:hidden;pointer-events:none}
+@media(max-width:600px){.has-intro{--intro-travel:250svh}.intro-skip{right:max(20px,env(safe-area-inset-right));top:max(15px,env(safe-area-inset-top))}.intro-hint{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.intro-runway,.intro-overlay{display:none!important}.has-intro .site-page{transform:none!important}}
