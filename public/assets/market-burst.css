@@ -1,0 +1,99 @@
+/* A single outward burst. The resting composition also works without JS. */
+.market-burst {
+  --burst-paper: #eeecfa;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  margin-top: 76px;
+  background: var(--burst-paper);
+  color: #171720;
+}
+.market-burst-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(100%, 1440px);
+  min-height: 640px;
+  margin-inline: auto;
+}
+.market-burst-copy {
+  position: relative;
+  z-index: 1;
+  width: 40%;
+  padding: 20px 0;
+  background: var(--burst-paper);
+  text-align: center;
+}
+.market-burst h2 {
+  margin: 0;
+  font-size: clamp(44px, 4.8vw, 68px);
+  font-weight: 600;
+  letter-spacing: -.055em;
+  line-height: 1.25;
+}
+.market-burst-copy p {
+  margin: 24px 0 28px;
+  color: #646075;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.market-burst .button {
+  min-height: 50px;
+  padding-inline: 24px;
+  background: #191923;
+  color: #fff;
+  border-radius: 12px;
+  font-weight: 500;
+}
+.market-burst .button:hover { background: #393247; }
+.market-burst .button:focus-visible { outline-color: #6556a8; }
+.market-burst-coins { position: absolute; inset: 0; pointer-events: none; }
+.burst-coin {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  max-width: none;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(var(--tilt));
+  user-select: none;
+  -webkit-user-drag: none;
+}
+[data-burst-state="ready"] .burst-coin { opacity: 0; }
+.burst-btc  { --x: 12%; --y: 49%; --size: 88px; --tilt: -16deg; }
+.burst-sol  { --x: 24%; --y: 23%; --size: 70px; --tilt: 0deg; background: #101116; padding: calc(var(--size) * .23); object-fit: contain; }
+.burst-xrp  { --x: 10%; --y: 18%; --size: 58px; --tilt: -12deg; }
+.burst-link { --x: 9%;  --y: 80%; --size: 52px; --tilt: 14deg; }
+.burst-ltc  { --x: 26%; --y: 69%; --size: 56px; --tilt: -20deg; }
+.burst-avax { --x: 28%; --y: 88%; --size: 48px; --tilt: 9deg; }
+.burst-eth  { --x: 80%; --y: 46%; --size: 82px; --tilt: 13deg; }
+.burst-usdc { --x: 91%; --y: 66%; --size: 64px; --tilt: -14deg; }
+.burst-doge { --x: 76%; --y: 18%; --size: 62px; --tilt: -15deg; }
+.burst-usdt { --x: 76%; --y: 82%; --size: 56px; --tilt: 12deg; }
+.burst-ada  { --x: 89%; --y: 87%; --size: 52px; --tilt: -11deg; }
+.burst-uni  { --x: 91%; --y: 26%; --size: 54px; --tilt: 17deg; }
+@media (min-width: 1600px) {
+  .market-burst-stage { min-height: 700px; }
+}
+@media (max-width: 800px) {
+  .market-burst { margin-top: 42px; }
+  .market-burst-stage { min-height: 600px; }
+  .market-burst-copy { width: 78%; padding-block: 14px; }
+  .market-burst h2 { font-size: clamp(40px, 8vw, 54px); letter-spacing: -.04em; }
+  .market-burst-copy p { margin-block: 19px 24px; font-size: 12px; }
+  .market-burst .button { min-height: 48px; font-size: 13px; }
+  .burst-btc  { --x: 15%; --y: 22%; --size: 62px; }
+  .burst-sol  { --x: 43%; --y: 12%; --size: 48px; }
+  .burst-xrp  { --x: 78%; --y: 11%; --size: 36px; }
+  .burst-eth  { --x: 84%; --y: 23%; --size: 60px; }
+  .burst-usdc { --x: 83%; --y: 78%; --size: 50px; }
+  .burst-doge { --x: 48%; --y: 88%; --size: 48px; }
+  .burst-usdt { --x: 16%; --y: 79%; --size: 48px; }
+  .burst-link { --x: 16%; --y: 10%; --size: 34px; }
+  .burst-ltc, .burst-avax, .burst-ada, .burst-uni { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-burst-state="ready"] .burst-coin { opacity: 1; }
+  .market-burst .button { transition: none; }
+}

@@ -1,0 +1,10 @@
+Cryptocurrency Icons by the Cryptocurrency Icons contributors
+https://github.com/spothq/cryptocurrency-icons
+CC0 1.0 Universal — see LICENSE.txt
+Applies to all icons except sol-mark.svg. Downloaded 2026-11-01; SVG artwork is unmodified.
+Coin marks belong to their respective projects.
+
+sol-mark.svg: official Solana brand asset, unmodified.
+https://solana.com/branding
+https://github.com/solana-foundation/solana-com/blob/main/apps/web/public/src/img/branding/solanaLogoMark.svg
+Solana marks belong to the Solana Foundation and are subject to its brand guidelines.

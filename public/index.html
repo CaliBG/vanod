@@ -10,6 +10,8 @@
   <script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("has-intro");</script>
   <script type="module" src="assets/site.js?v=elastic-aperture-20261030"></script>
   <script type="module" src="assets/hardware-gallery.js?v=slate-p3-20261101"></script>
+  <link rel="stylesheet" href="assets/market-burst.css?v=20261101-1">
+  <script type="module" src="assets/market-burst.js?v=20261101-1"></script>
 </head>
 <body>
 <section class="intro-overlay" data-intro role="region" aria-label="Vanod 全屏开场" tabindex="-1">
@@ -46,6 +48,29 @@
   <article><span class="summary-label">市场</span><h2>实时行情</h2><p>BTC、ETH、SOL 报价与走势，来自公开市场。</p><span class="availability available">已开放</span></article>
   <article><span class="summary-label">交易</span><h2>先用虚拟资金体验</h2><p>市价买卖、限价挂单与撤单，在浏览器里完成。</p><span class="availability available">已开放</span></article>
   <article><span class="summary-label">钱包</span><h2>在独立设备上确认</h2><p>Slate 磁吸冷钱包，面向离线签名与硬件确认设计。</p><span class="availability">原型开发中</span></article>
+</section>
+<section class="market-burst" id="explore-markets" data-market-burst aria-labelledby="market-burst-title">
+  <div class="market-burst-stage">
+    <div class="market-burst-coins" aria-hidden="true">
+      <img class="burst-coin burst-btc" src="assets/coins/btc.svg" alt="" width="88" height="88" decoding="async" draggable="false">
+      <img class="burst-coin burst-sol" src="assets/coins/sol-mark.svg" alt="" width="70" height="70" decoding="async" draggable="false">
+      <img class="burst-coin burst-xrp" src="assets/coins/xrp.svg" alt="" width="58" height="58" decoding="async" draggable="false">
+      <img class="burst-coin burst-link" src="assets/coins/link.svg" alt="" width="52" height="52" decoding="async" draggable="false">
+      <img class="burst-coin burst-ltc" src="assets/coins/ltc.svg" alt="" width="56" height="56" decoding="async" draggable="false">
+      <img class="burst-coin burst-avax" src="assets/coins/avax.svg" alt="" width="48" height="48" decoding="async" draggable="false">
+      <img class="burst-coin burst-eth" src="assets/coins/eth.svg" alt="" width="82" height="82" decoding="async" draggable="false">
+      <img class="burst-coin burst-usdc" src="assets/coins/usdc.svg" alt="" width="64" height="64" decoding="async" draggable="false">
+      <img class="burst-coin burst-doge" src="assets/coins/doge.svg" alt="" width="62" height="62" decoding="async" draggable="false">
+      <img class="burst-coin burst-usdt" src="assets/coins/usdt.svg" alt="" width="56" height="56" decoding="async" draggable="false">
+      <img class="burst-coin burst-ada" src="assets/coins/ada.svg" alt="" width="52" height="52" decoding="async" draggable="false">
+      <img class="burst-coin burst-uni" src="assets/coins/uni.svg" alt="" width="54" height="54" decoding="async" draggable="false">
+    </div>
+    <div class="market-burst-copy">
+      <h2 id="market-burst-title">看清市场<br>再做决定</h2>
+      <p>从 BTC、ETH、SOL 的公开行情开始</p>
+      <a class="button" href="#markets">探索市场 <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
 </section>
 <section class="markets-section container" id="markets">
   <div class="section-top"><div><h2>关注你熟悉的市场</h2><p>公开市场报价持续更新。选择一个交易对，开始模拟体验。</p></div><a class="text-link" href="trade.html">进入模拟交易 <span aria-hidden="true">↗</span></a></div>
