@@ -79,3 +79,18 @@
 .download-copy .download-scope{font-size:11px;color:var(--dim);margin:20px 0 0;line-height:1.8}
 .release-open{font-size:11px;color:var(--accent);white-space:nowrap;padding-block:10px}
 .android-download{min-height:48px}
+
+/* Slate P3 — current hardware views share one stable image frame. */
+.hardware-stage{aspect-ratio:6/5;overflow:hidden;border-radius:18px;background:#cecece}
+.hardware-stage>img{display:block;width:100%;height:100%;object-fit:contain;border-radius:0}
+.hardware-views{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:16px}
+.hardware-views a{display:block;min-width:0;padding:5px;border:1px solid transparent;border-radius:11px;color:var(--muted);transition:border-color .2s,color .2s}
+.hardware-views a[aria-current="true"]{border-color:var(--accent);color:var(--text)}
+.hardware-views a:hover{color:var(--text);border-color:var(--dim)}
+.hardware-views a:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.hardware-views img{display:block;width:100%;height:auto;aspect-ratio:6/5;object-fit:contain;border-radius:6px}
+.hardware-views span{display:block;text-align:center;font-size:12px;line-height:1.4;margin:8px 0 4px}
+.hardware-figure figcaption>span{display:block}
+.hardware-figure .hardware-detail{color:var(--muted);font-size:12px;min-height:2em;margin-bottom:4px}
+@media(max-width:800px){.hardware-stage{border-radius:12px}.hardware-views{gap:6px;margin-top:10px}.hardware-views a{padding:4px}.hardware-views span{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.hardware-views a{transition:none}}
