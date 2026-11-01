@@ -72,3 +72,10 @@
 .has-intro .intro-complete{visibility:hidden;pointer-events:none}
 @media(max-width:600px){.has-intro{--intro-travel:250svh}.intro-skip{right:max(20px,env(safe-area-inset-right));top:max(15px,env(safe-area-inset-top))}.intro-hint{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.intro-runway,.intro-overlay{display:none!important}.has-intro .site-page{position:static!important}}
+.download-copy .download-meta{font-size:11px;line-height:1.8;color:var(--muted);margin:16px 0 12px}
+.download-help{display:flex;flex-wrap:wrap;gap:12px 22px;font-size:11px;color:var(--accent)}
+.download-help a{padding-block:5px;text-underline-offset:4px}
+.download-help a:hover{text-decoration:underline}
+.download-copy .download-scope{font-size:11px;color:var(--dim);margin:20px 0 0;line-height:1.8}
+.release-open{font-size:11px;color:var(--accent);white-space:nowrap;padding-block:10px}
+.android-download{min-height:48px}
