@@ -21,7 +21,7 @@
   z-index: 1;
   width: 40%;
   padding: 20px 0;
-  background: var(--burst-paper);
+  background: transparent;
   text-align: center;
 }
 .market-burst h2 {

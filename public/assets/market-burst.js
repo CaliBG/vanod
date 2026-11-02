@@ -49,7 +49,8 @@ if (section instanceof HTMLElement) {
         `translate(calc(-50% + ${dx * distance}px), calc(-50% + ${dy * distance}px)) scale(${scale}) rotate(${angle}deg)`;
       animations.push(coin.animate([
         { transform: transform(1, .22, tilt - direction * 45), opacity: 0, offset: 0, easing: 'cubic-bezier(.16,.7,.25,1)' },
-        { transform: transform(.82, .46, tilt - direction * 28), opacity: 1, offset: .12, easing: 'cubic-bezier(.18,.65,.2,1)' },
+        { transform: transform(.82, .46, tilt - direction * 28), opacity: .18, offset: .12, easing: 'cubic-bezier(.18,.65,.2,1)' },
+        { transform: transform(.32, .82, tilt - direction * 10), opacity: .78, offset: .36, easing: 'cubic-bezier(.18,.65,.2,1)' },
         { transform: transform(-.045, 1.035, tilt + direction * 5), opacity: 1, offset: .72, easing: 'cubic-bezier(.4,0,.35,1)' },
         { transform: transform(.008, .995, tilt - direction * 1.2), opacity: 1, offset: .89, easing: 'ease-out' },
         { transform: transform(0, 1, tilt), opacity: 1, offset: 1 },
