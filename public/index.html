@@ -12,6 +12,8 @@
   <script type="module" src="assets/hardware-gallery.js?v=slate-p3-20261101"></script>
   <link rel="stylesheet" href="assets/market-burst.css?v=20261102-1">
   <script type="module" src="assets/market-burst.js?v=20261102-1"></script>
+  <link rel="stylesheet" href="assets/film/brand-film.css?v=20261103-v4">
+  <script type="module" src="assets/film/brand-film.js?v=20261103-v4"></script>
 </head>
 <body>
 <section class="intro-overlay" data-intro role="region" aria-label="Vanod 全屏开场" tabindex="-1">
@@ -48,6 +50,23 @@
   <article><span class="summary-label">市场</span><h2>实时行情</h2><p>BTC、ETH、SOL 报价与走势，来自公开市场。</p><span class="availability available">已开放</span></article>
   <article><span class="summary-label">交易</span><h2>先用虚拟资金体验</h2><p>市价买卖、限价挂单与撤单，在浏览器里完成。</p><span class="availability available">已开放</span></article>
   <article><span class="summary-label">钱包</span><h2>在独立设备上确认</h2><p>Slate 磁吸冷钱包，面向离线签名与硬件确认设计。</p><span class="availability">原型开发中</span></article>
+</section>
+<section class="brand-film container" id="brand-film" aria-labelledby="brand-film-title">
+  <div class="brand-film-heading"><div><span class="section-kicker">VANOD FILM / 00:30</span><h2 id="brand-film-title">从屏幕，到你手中</h2></div><p>流动的行情、随手可看的小组件，与独立确认的 Slate。用 30 秒，认识 Vanod。</p></div>
+  <div class="brand-film-player" data-brand-film>
+    <video controls playsinline preload="none" width="1920" height="1080" poster="assets/film/vanod-brand-film-v4-poster.webp" aria-label="Vanod 品牌短片，30 秒，含音乐与音效">
+      <source src="assets/film/vanod-brand-film-v4.mp4" type="video/mp4">
+      <track kind="captions" src="assets/film/vanod-brand-film-zh.vtt" srclang="zh-CN" label="中文字幕">
+      <track kind="captions" src="assets/film/vanod-brand-film-en.vtt" srclang="en" label="English captions">
+      <a href="assets/film/vanod-brand-film-v4.mp4">打开 Vanod 品牌短片</a>
+    </video>
+    <button class="brand-film-play" type="button" data-film-play hidden aria-label="播放 Vanod 品牌短片，含声音">
+      <span class="brand-film-play-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3.5a1 1 0 0 1 1.5-.86l14 8.5a1 1 0 0 1 0 1.72l-14 8.5A1 1 0 0 1 6 20.5Z"/></svg></span>
+      <span class="brand-film-play-label">播放品牌短片 <small>00:30 · 含声音</small></span>
+    </button>
+  </div>
+  <p class="brand-film-error" data-film-error hidden>视频暂时无法播放，<a href="assets/film/vanod-brand-film-v4.mp4">在独立窗口打开</a>。</p>
+  <div class="brand-film-caption"><span>品牌概念短片 · 演示行情与硬件渲染</span><a href="assets/film/vanod-brand-film-v4.mp4" target="_blank" rel="noopener noreferrer">单独观看 ↗</a></div>
 </section>
 <section class="market-burst" id="explore-markets" data-market-burst aria-labelledby="market-burst-title">
   <div class="market-burst-stage">
@@ -126,7 +145,7 @@
   </div>
   <div class="footer-motion-caption"><p>清晰交易，独立掌控</p><button type="button" class="motion-replay" data-motion-replay aria-label="重播品牌动效">重播 <span aria-hidden="true">↻</span></button></div>
   <span class="sr-only" id="signature-help" data-motion-hint>左右拖动标志，也可以使用左右方向键控制；Home 回到起点，End 查看完整字标。</span>
-</div><div class="footer-links"><div><strong>产品</strong><a href="#download">下载 Android</a><a href="#markets">市场行情</a><a href="trade.html">模拟交易</a><a href="#wallet">Slate 硬件</a></div><div><strong>了解更多</strong><a href="about.html">产品说明</a><a href="about.html#privacy">隐私说明</a><a href="https://github.com/CaliBG/vanod" target="_blank" rel="noopener noreferrer">项目动态 ↗</a></div></div></div><div class="footer-bottom"><span>© 2026 Vanod</span><span>公开行情不构成投资建议。当前仅为模拟交易与产品概念体验。</span></div></div></footer>
+</div><div class="footer-links"><div><strong>产品</strong><a href="#download">下载 Android</a><a href="#markets">市场行情</a><a href="trade.html">模拟交易</a><a href="#wallet">Slate 硬件</a><a href="#brand-film">品牌短片</a></div><div><strong>了解更多</strong><a href="about.html">产品说明</a><a href="about.html#privacy">隐私说明</a><a href="https://github.com/CaliBG/vanod" target="_blank" rel="noopener noreferrer">项目动态 ↗</a></div></div></div><div class="footer-bottom"><span>© 2026 Vanod</span><span>公开行情不构成投资建议。当前仅为模拟交易与产品概念体验。</span></div></div></footer>
 </div>
 <div class="intro-runway" data-intro-runway aria-hidden="true"></div>
 </div>
