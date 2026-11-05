@@ -11,11 +11,15 @@ if (section instanceof HTMLElement) {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   let played = false;
   let frame = 0;
-  let previousY = window.scrollY;
+  let previousY = Math.max(0, window.scrollY);
+  let near = false;
+  let nextProbeY = 0;
+  let observer = null;
   let animations = [];
 
   function stopWatching() {
     window.removeEventListener('scroll', onScroll);
+    observer?.disconnect();
     cancelAnimationFrame(frame);
     frame = 0;
   }
@@ -63,9 +67,11 @@ if (section instanceof HTMLElement) {
     Promise.all(animations.map(animation => animation.finished)).then(settle).catch(() => {});
   }
 
-  function inspect(downward) {
+  function inspect(downward, bounds = heading.getBoundingClientRect()) {
     if (played) return;
-    const bounds = heading.getBoundingClientRect();
+    // A jump may cross the entire heading between two non-intersecting frames.
+    // Cache the nearest scroll position that can reach its observation margin.
+    nextProbeY = Math.max(0, window.scrollY) + Math.max(0, bounds.top - window.innerHeight - 300);
     // A deep link / restored scroll below this section should show the final
     // composition, rather than firing an unseen animation on the way back up.
     if (bounds.bottom <= 0) settle();
@@ -73,7 +79,12 @@ if (section instanceof HTMLElement) {
   }
 
   function onScroll() {
-    if (frame || played) return;
+    if (frame || played || document.hidden) return;
+    const y = Math.max(0, window.scrollY);
+    if (observer && !near && y < nextProbeY) {
+      previousY = y;
+      return;
+    }
     frame = requestAnimationFrame(() => {
       frame = 0;
       const nextY = Math.max(0, window.scrollY);
@@ -87,6 +98,15 @@ if (section instanceof HTMLElement) {
     settle();
   } else {
     section.dataset.burstState = 'ready';
+    if (typeof IntersectionObserver === 'function') {
+      observer = new IntersectionObserver(entries => {
+        if (played || !entries.length) return;
+        const entry = entries[entries.length - 1];
+        near = entry.isIntersecting;
+        inspect(false, entry.boundingClientRect);
+      }, { rootMargin: '300px 0px' });
+      observer.observe(heading);
+    }
     window.addEventListener('scroll', onScroll, { passive: true });
     inspect(false);
   }
@@ -94,12 +114,21 @@ if (section instanceof HTMLElement) {
   // one-shot state while CSS takes care of the new responsive positions.
   window.addEventListener('resize', () => {
     if (section.dataset.burstState === 'playing') settle();
+    else if (!played && (!observer || near)) inspect(false);
   }, { passive: true });
+  function restore() {
+    if (played) return;
+    previousY = Math.max(0, window.scrollY);
+    inspect(false);
+  }
   window.addEventListener('pagehide', () => {
     if (section.dataset.burstState === 'playing') settle();
+    else { cancelAnimationFrame(frame); frame = 0; }
   });
+  window.addEventListener('pageshow', restore);
   document.addEventListener('visibilitychange', () => {
     if (document.hidden && section.dataset.burstState === 'playing') settle();
+    else if (!document.hidden) restore();
   });
   reduced.addEventListener('change', () => { if (reduced.matches) settle(); });
 }
