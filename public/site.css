@@ -106,11 +106,11 @@
 .intro-glyph{display:none;position:absolute;left:0;top:0;transform-origin:0 0;pointer-events:none}
 .intro-ready .intro-glyph{display:block;will-change:transform,opacity}
 .intro-mark-layer{width:622px;height:496px}
-.intro-letter-layer{width:293.642px;height:71.601px}
+.intro-letter-art{position:absolute;left:50%;top:50%;width:min(70%,530px);height:auto;max-width:none;transform:translate(-50%,-50%);pointer-events:none;overflow:visible;shape-rendering:geometricPrecision}
+.intro-ready .intro-letter-art{left:0;width:100%;transform:none}
+.intro-ready .intro-rest-v{display:none}
 .intro-glyph svg{display:block;width:100%;height:100%;max-width:none;overflow:visible}
 
-.intro-fallback{position:absolute;left:50%;top:50%;width:min(70vw,530px);height:auto;transform:translate(-50%,-50%);filter:brightness(0)}
-.intro-ready .intro-fallback{display:none}
 .intro-skip{position:absolute;right:max(28px,env(safe-area-inset-right));top:max(24px,env(safe-area-inset-top));padding:12px 4px;font-size:12px;color:#403951;transition:color .2s}
 .intro-skip:hover{color:#11121a}.intro-skip span{margin-left:14px}.intro-skip:focus-visible{outline-color:#403951}
 .intro-hint{position:absolute;bottom:max(32px,env(safe-area-inset-bottom));left:0;right:0;text-align:center;margin:0;font-size:12px;letter-spacing:.04em;color:#4f4766;opacity:var(--intro-hint-opacity,1);pointer-events:none}
