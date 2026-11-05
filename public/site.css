@@ -88,7 +88,14 @@
 .download-help a:hover{text-decoration:underline}
 .download-copy .download-scope{font-size:11px;color:var(--dim);margin:20px 0 0;line-height:1.8}
 .release-open{font-size:11px;color:var(--accent);white-space:nowrap;padding-block:10px}
-.android-download{min-height:48px}
+.desktop-installers{display:grid;border-top:1px solid var(--line)}
+.installer{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:70px;padding:12px 0;border-bottom:1px solid var(--line);color:var(--text)}
+.installer strong,.installer small{display:block}.installer strong{font-size:15px;font-weight:600}.installer small{margin-top:4px;font-size:12px;color:var(--muted)}
+.installer-action{flex:none;padding:7px 10px;border:1px solid var(--line);border-radius:6px;color:var(--accent);font-size:12px;white-space:nowrap}
+.installer:hover .installer-action,.installer:focus-visible .installer-action{border-color:var(--accent);background:var(--raised)}
+.platform-heading{margin:0;font-size:15px;font-weight:600}
+.mobile-help{padding-top:8px}
+@media(max-width:380px){.installer{gap:6px}.installer-action{padding-inline:6px}.release-list>div{grid-template-columns:40px minmax(0,1fr) auto;gap:8px}}
 
 /* Slate P3 — current hardware views share one stable image frame. */
 .hardware-stage{aspect-ratio:6/5;overflow:hidden;border-radius:18px;background:#cecece}
