@@ -63,6 +63,8 @@
 .has-intro .intro-overlay.intro-ready{background:transparent}
 .intro-veil{display:none;position:absolute;inset:0;width:100%;height:100%;max-width:none;pointer-events:none}
 .intro-ready .intro-veil{display:block}
+.intro-wash{background:#c5bff4;will-change:opacity}
+.has-intro [data-intro-driver="scroll-timeline"].intro-complete{visibility:visible;pointer-events:none}
 .intro-overlay [hidden]{display:none!important}
 .intro-glyph{display:none;position:absolute;left:0;top:0;transform-origin:0 0;pointer-events:none}
 .intro-ready .intro-glyph{display:block;will-change:transform,opacity}
