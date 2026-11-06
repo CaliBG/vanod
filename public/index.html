@@ -11,7 +11,7 @@
     function bypassVanodIntro(){document.documentElement.classList.remove('has-intro');document.documentElement.dataset.introBypassed='true';var page=document.querySelector('[data-site-page]');if(page)page.inert=false;}
     if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('has-intro');setTimeout(function(){if(!document.querySelector('.intro-ready'))bypassVanodIntro();},6000);}
   </script>
-  <script type="module" src="assets/site-motion.js?v=ios-safari-follow-20261106" onerror="bypassVanodIntro()"></script>
+  <script type="module" src="assets/site-motion.js?v=compositor-scroll-20261107" onerror="bypassVanodIntro()"></script>
   <script type="module" src="assets/site.js?v=visible-market-20261106"></script>
   <script type="module" src="assets/hardware-gallery.js?v=slate-p3-20261101"></script>
   <link rel="stylesheet" href="assets/market-burst.css?v=20261102-1">
