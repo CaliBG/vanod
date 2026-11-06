@@ -6,10 +6,13 @@
   <meta name="description" content="探索 Vanod：公开现货行情、专业模拟交易与 Slate 磁吸硬件钱包概念。">
   <meta name="theme-color" content="#0b0d12"><link rel="canonical" href="https://calibg.github.io/vanod/">
   <meta property="og:title" content="Vanod | 交易软件与磁吸冷钱包"><meta property="og:description" content="公开行情、模拟交易，与独立的硬件钱包。探索 Vanod。"><meta property="og:type" content="website"><meta property="og:url" content="https://calibg.github.io/vanod/"><meta property="og:image" content="https://calibg.github.io/vanod/assets/social-cover.png?v=brand-2">
-  <link rel="icon" href="assets/favicon.svg?v=brand-2" type="image/svg+xml"><link rel="stylesheet" href="assets/base.css?v=brand-2"><link rel="stylesheet" href="site.css?v=intro-vector-edges">
-  <script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("has-intro");</script>
-  <script type="module" src="assets/site-motion.js?v=intro-vector-edges"></script>
-  <script type="module" src="assets/site.js?v=elastic-aperture-20261030"></script>
+  <link rel="icon" href="assets/favicon.svg?v=brand-2" type="image/svg+xml"><link rel="stylesheet" href="assets/base.css?v=brand-2"><link rel="stylesheet" href="site.css?v=scroll-perf-20261106">
+  <script>
+    function bypassVanodIntro(){document.documentElement.classList.remove('has-intro');document.documentElement.dataset.introBypassed='true';var page=document.querySelector('[data-site-page]');if(page)page.inert=false;}
+    if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('has-intro');setTimeout(function(){if(!document.querySelector('.intro-ready'))bypassVanodIntro();},6000);}
+  </script>
+  <script type="module" src="assets/site-motion.js?v=scroll-perf-20261106" onerror="bypassVanodIntro()"></script>
+  <script type="module" src="assets/site.js?v=visible-market-20261106"></script>
   <script type="module" src="assets/hardware-gallery.js?v=slate-p3-20261101"></script>
   <link rel="stylesheet" href="assets/market-burst.css?v=20261102-1">
   <script type="module" src="assets/market-burst.js?v=intro-perf-20261105"></script>
